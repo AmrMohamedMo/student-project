@@ -1,35 +1,27 @@
-﻿#ifndef STUDENT_H
+#ifndef STUDENT_H
 #define STUDENT_H
-
 #include <iostream>
-#include <vector>
 #include <string>
+#include <vector>
+#include <map>
+#include <algorithm> // ضفناها هنا عشان نستخدم sort
 
 using namespace std;
 
 class Person {
-protected:
-    string name;
 public:
-    Person(string n);
+    string name;
+    Person(string n) { name = n; }
 };
 
 class Student : public Person {
 private:
     int id;
     double gpa;
-    vector<string> courses; 
-
 public:
-    Student(int i, string n, double g);
-
-    // Getters 
-    int getId();
-    double getGpa();
-    string getName();
-
-    void addCourse(string courseName);
-    void printStudent(); 
+    Student() : Person("") { id = 0; gpa = 0.0; }
+    Student(int i, string n, double g) : Person(n) { id = i; gpa = g; }
+    int getId() { return id; }
+    double getGpa() { return gpa; }
 };
-
 #endif
